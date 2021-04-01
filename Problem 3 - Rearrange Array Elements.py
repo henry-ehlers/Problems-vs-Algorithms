@@ -8,6 +8,15 @@ def rearrange_digits(input_list):
        (int),(int): Two maximum sums
     """
 
+    if not isinstance(input_list, list):
+        return [None]
+
+    if len(input_list) == 0:
+        return [None]
+
+    if len(input_list) == 1:
+        return [input_list[0]]
+
     # Merge Sort
     sorted_list = merge_sort(input_list)
 
@@ -25,7 +34,7 @@ def rearrange_digits(input_list):
     
     # Join the two numbers 
     for num in unjoined_nums:
-        print(int(''.join([str(int) for int in num])))
+        #print(int(''.join([str(int) for int in num])))
         joined_nums.append(int(''.join([str(int) for int in num])))
     
     # return
@@ -98,11 +107,19 @@ def merge(left_half, rigt_half):
 def test_function(test_case):
     output = rearrange_digits(test_case[0])
     solution = test_case[1]
-    if sum(output) == sum(solution):
-        print("Pass")
+    if output[0] != None:
+        if sum(output) == sum(solution):
+            print("Pass")
+        else:
+            print("Fail")
     else:
-        print("Fail")
+        if output[0] == solution[0]:
+            print("Pass")
+        else:
+            print("Fail")
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])
-test_case = [[4, 6, 2, 5, 9, 8], [964, 852]]
+test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+test_function([[], [None]])
+test_function([[7], [7]])
 
