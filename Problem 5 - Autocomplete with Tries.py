@@ -41,13 +41,13 @@ class Trie:
     def find(self, prefix):
         current_node = self.root
         for letter in prefix:
-            print("prefix letter: {}".format(letter))
+            #print("prefix letter: {}".format(letter))
             if letter in current_node.children:
-                print("present")
+                #print("present")
                 current_node = current_node.children[letter]
             else:
                 return None
-        return current_node.suffixes()
+        return current_node
             
 MyTrie = Trie()
 wordList = [
@@ -58,4 +58,5 @@ wordList = [
 for word in wordList:
     MyTrie.insert(word)
 
-print(MyTrie.find("an"))
+node = MyTrie.find("an")
+print(node.suffixes())
