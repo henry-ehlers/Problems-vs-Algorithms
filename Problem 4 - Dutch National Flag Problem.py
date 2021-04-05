@@ -6,6 +6,18 @@ def sort_012(in_list):
        input_list(list): List to be sorted
     """
 
+    # Ensure the input is indeed of type "list"
+    if not isinstance(in_list, list):
+        exit("Intput not of type list.")
+
+    # Ensure the input list is at least of vector of length 1
+    if len(in_list) < 1:
+        return in_list
+
+    # Ensure the input vector is numeric
+    if not all(isinstance(element, int) or isinstance(element, float) for element in in_list):
+        exit("Unexpected Value in input list.")
+
     # Initialize empty vector of legth of input vector
     out_list = [None] * len(in_list)
 
@@ -22,8 +34,6 @@ def sort_012(in_list):
             ones += 1
         elif value == 2:
             twos += 1
-        else:
-            exit("Unexpected Value in input list.")
 
     # Fill intialized vector with 0's, 1's, and 2's
     out_list[0:zros] = [0] * zros
@@ -44,3 +54,9 @@ def test_function(test_case):
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+test_function([0, 0, 0, 0, 0, 0])
+test_function([1, 1, 1, 1, 1])
+test_function([2, 2, 2, 2])
+test_function([])
+test_function(["a", "a", "b", "b", "c", "a"])
+test_function(5)

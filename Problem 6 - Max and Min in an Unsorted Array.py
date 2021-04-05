@@ -8,8 +8,13 @@ def get_min_max(integers):
 	if not isinstance(integers, list):
 		exit("Intput not of type list.")
 
+	# Check if input is at least of length 1
 	if not len(integers) > 0:
 		return [None, None] 
+
+	# Ensure the input vector is numeric
+    if not all(isinstance(element, int) or isinstance(element, float) for element in in_list):
+        exit("Unexpected non-integer or float value type in input list.")
 
 	# Initialize largest and smallest values
 	smallest = float("inf")
@@ -35,4 +40,6 @@ import random
 l = [i for i in range(0, 10)]  # a list containing 0 - 9
 random.shuffle(l)
 
-print(get_min_max(l))
+print(get_min_max([])) # returns None
+print(get_min_max(["a", "a", "b", "b", "a", "c"])) # non-0 exit (not numeric)
+print(get_min_max(l)) # non-0 exit (not list)
